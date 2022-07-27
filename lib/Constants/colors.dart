@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
 
-class MyColors {
-  static const Color primaryColor = Color(0xff0A192F);
+class AppColors {
+  static const Color darkBlueColor = Color(0xff161b28);
 }
 
 LinearGradient linearGradient() {

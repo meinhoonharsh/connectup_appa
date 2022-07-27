@@ -2,16 +2,19 @@
 
 //https://picsum.photos/200/300   //  ⌘ ñ
 import 'package:auto_route/auto_route.dart';
+import 'package:connect_up/Data/services/secure_storage.dart';
+import 'package:connect_up/Logic/block_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:semikolan_app/Data/services/secure_storage.dart';
-import 'package:semikolan_app/Logic/block_provider.dart';
-import 'package:semikolan_app/Routes/routes.gr.dart';
+
+import 'Routes/routes.gr.dart';
 
 // flutter packages pub run build_runner watch
+
+
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -65,11 +68,11 @@ class MyApp extends StatelessWidget {
 
         title: 'homepage',
         debugShowCheckedModeBanner: false,
-        // routerDelegate: _appRouter.delegate(initialRoutes: [
-        //   isLoggedIn ? OnBoardingScreen() : OnBoardingScreen()
-        // ]),
+        routerDelegate: _appRouter.delegate(initialRoutes: [
+          isLoggedIn ? LoginScreen() : LoginScreen()
+        ]),
 
-        routerDelegate: _appRouter.delegate(),
+        // routerDelegate: _appRouter.delegate(),
 
         routeInformationParser:
             _appRouter.defaultRouteParser(includePrefixMatches: true),

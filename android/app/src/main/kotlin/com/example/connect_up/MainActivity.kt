@@ -1,4 +1,4 @@
-package com.example.semikolan_app
+package com.example.connect_up
 
 import io.flutter.embedding.android.FlutterActivity
 

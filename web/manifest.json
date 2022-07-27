@@ -1,6 +1,6 @@
 {
-    "name": "semikolan_app",
-    "short_name": "semikolan_app",
+    "name": "connect_up",
+    "short_name": "connect_up",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

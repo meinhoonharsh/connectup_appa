@@ -1,10 +1,9 @@
+import 'package:connect_up/Data/repositories/auth_repository.dart';
+import 'package:connect_up/Data/services/secure_storage.dart';
+import 'package:connect_up/Logic/Cubit/auth_cubit/auth_cubit.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:semikolan_app/Data/repositories/auth_repository.dart';
-import 'package:semikolan_app/Data/services/secure_storage.dart';
-import 'package:semikolan_app/Logic/Cubit/auth_cubit/auth_cubit.dart';
-
 Future<List<BlocProvider>> getBlocProviders(
     SecureStorage secureStorage, HydratedStorage hydratedStorage) async {
   // system utilities

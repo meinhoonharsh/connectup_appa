@@ -5,9 +5,9 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:semikolan_app/Data/services/api_result.dart';
-import 'package:semikolan_app/Data/services/dio_client.dart';
-import 'package:semikolan_app/Data/services/network_exceptions.dart';
+import 'package:connect_up/Data/services/api_result.dart';
+import 'package:connect_up/Data/services/dio_client.dart';
+import 'package:connect_up/Data/services/network_exceptions.dart';
 
 class AuthRepository {
   late DioClient dioClient;

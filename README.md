@@ -1,4 +1,4 @@
-# semikolan_app
+# connect_up
 
 A new Flutter project.
 

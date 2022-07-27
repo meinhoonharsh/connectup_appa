@@ -3,13 +3,13 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:connect_up/Constants/enums.dart';
+import 'package:connect_up/Data/repositories/auth_repository.dart';
+import 'package:connect_up/Data/services/api_result.dart';
+import 'package:connect_up/Data/services/network_exceptions.dart';
+import 'package:connect_up/Data/services/secure_storage.dart';
 import 'package:equatable/equatable.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:semikolan_app/Constants/enums.dart';
-import 'package:semikolan_app/Data/repositories/auth_repository.dart';
-import 'package:semikolan_app/Data/services/api_result.dart';
-import 'package:semikolan_app/Data/services/network_exceptions.dart';
-import 'package:semikolan_app/Data/services/secure_storage.dart';
 
 part 'auth_state.dart';
 

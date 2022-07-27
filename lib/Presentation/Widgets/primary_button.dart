@@ -76,14 +76,14 @@ class PrimaryButton extends StatelessWidget {
       ),
       style: disabled == false
           ? ElevatedButton.styleFrom(
-              primary: const Color(0xff0A192F),
+              primary: const Color(0xff7750f8),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30)),
               padding: const EdgeInsets.all(14),
               elevation: 0,
             )
           : ElevatedButton.styleFrom(
-              primary: const Color(0xff0A192F),
+              primary: const Color(0xff7750f8),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30)),
               padding: const EdgeInsets.all(14),

@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:semikolan_app/Constants/enums.dart';
+import 'package:connect_up/Constants/enums.dart';
+import 'package:flutter/material.dart'; 
 // import 'package:google_fonts/google_fonts.dart';
 
 const MaterialColor primaryMaterialColor = MaterialColor(

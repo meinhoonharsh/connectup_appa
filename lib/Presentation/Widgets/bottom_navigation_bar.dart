@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:auto_route/auto_route.dart';
+import 'package:connect_up/Presentation/Widgets/comind_soon_page.dart';
 import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:semikolan_app/Routes/routes.gr.dart';
 
 class MyBottomNavigationBar extends StatelessWidget {
   const MyBottomNavigationBar({
@@ -18,23 +18,23 @@ class MyBottomNavigationBar extends StatelessWidget {
       onTap: (int val) {
         switch (val) {
           case 0:
-            context.pushRoute(HomeScreen());
+            // context.pushRoute(HomeScreen());
 
             break;
           case 1:
-            context.pushRoute(IntrestScreen());
+            // context.pushRoute(IntrestScreen());
 
             break;
           case 2:
-            context.pushRoute(ComingSoonScreen());
+            // context.pushRoute(ComingSoonScreen());
 
             break;
           case 3:
-            context.pushRoute(UserProfileScreen());
+            // context.pushRoute(UserProfileScreen());
 
             break;
           default:
-            context.pushRoute(HomeScreen());
+          // context.pushRoute(HomeScreen());
         } //returns tab id which is user tapped
       },
       backgroundColor: Colors.white,

@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, library_private_types_in_public_api
 
+import 'package:connect_up/Data/services/secure_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:semikolan_app/Data/services/secure_storage.dart';
 // import 'package:nhsbpmonitor/constants/locations.dart';
 
 class MyDrawer extends StatefulWidget {

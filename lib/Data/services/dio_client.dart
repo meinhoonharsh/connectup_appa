@@ -3,9 +3,10 @@
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:connect_up/Config/env_config.dart';
+import 'package:connect_up/Data/services/secure_storage.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:semikolan_app/Data/services/secure_storage.dart';
 // import 'package:nhsbpmonitor/Data/services/secure_storage.dart';
 
 const _defaultConnectTimeout = Duration.millisecondsPerMinute;
@@ -34,7 +35,7 @@ class DioClient {
   }) {
     _dio = Dio();
     // baseUrl = "EnvironmentConfig.apiBase";
-    baseUrl = "https://appbackend.semikolan.co/";
+    baseUrl = "EnvironmentConfig.apiBase";
     _dio
       ..options.baseUrl = baseUrl
       ..options.connectTimeout = _defaultConnectTimeout
