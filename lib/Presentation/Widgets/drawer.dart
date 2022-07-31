@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, library_private_types_in_public_api
 
+import 'package:connect_up/Constants/colors.dart';
 import 'package:connect_up/Data/services/secure_storage.dart';
+import 'package:connect_up/Presentation/Widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 // import 'package:nhsbpmonitor/constants/locations.dart';
 
@@ -14,33 +16,57 @@ class MyDrawer extends StatefulWidget {
 class _MyDrawer2State extends State<MyDrawer> {
   @override
   Widget build(BuildContext context) {
-    var mediaquery = MediaQuery.of(context).size;
+    final mediaquery = MediaQuery.of(context).size;
 
     return Drawer(
       child: SingleChildScrollView(
         child: Container(
-          height: mediaquery.height - 20,
+          height: mediaquery.height,
           decoration: BoxDecoration(
-            color: Color(0xff23A6B1),
+            color: AppColors.darkBlueColor,
           ),
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.only(left: 20),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 // cancelButton(context),
-                const SizedBox(height: 20),
+                SizedBox(
+                  height: 40,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      IconButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          icon: Icon(
+                            Icons.arrow_back_sharp,
+                            color: Colors.white.withOpacity(0.6),
+                            size: 20,
+                          )),
+                    ],
+                  ),
+                ),
                 Row(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    const Spacer(
-                      flex: 10,
+                    // const Spacer(flex: 1),
+                    CircleAvatar(
+                      backgroundColor: Colors.grey,
+                      minRadius: 25,
+                      child: const Icon(
+                        Icons.person,
+                        color: Colors.white,
+                        size: 35,
+                      ),
                     ),
+                    const Spacer(flex: 1),
                     Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           'Mrs. Lorem Ipsum',
@@ -52,90 +78,113 @@ class _MyDrawer2State extends State<MyDrawer> {
                         ),
                         SizedBox(height: 5),
                         Text(
-                          'PT0003',
+                          'connectUp',
                           style: TextStyle(
                             color: Colors.white.withOpacity(0.8),
                             fontSize: 12,
                             // fontWeight: FontWeight.bold,
                           ),
                         ),
-                        SizedBox(height: 5),
-                        InkWell(
-                          onTap: () {},
-                          child: Text(
-                            'view_and_edit_profile',
-                            style: TextStyle(
-                                decoration: TextDecoration.underline,
-                                color: Colors.white.withOpacity(0.8),
-                                fontSize: 12),
-                          ),
-                        ),
+                        // const SizedBox(height: 5),
+                        // InkWell(
+                        //   onTap: () {},
+                        //   child: Text(
+                        //     'view_and_edit_profile',
+                        //     style: TextStyle(
+                        //         decoration: TextDecoration.underline,
+                        //         color: Colors.white.withOpacity(0.8),
+                        //         fontSize: 12),
+                        //   ),
+                        // ),
                       ],
                     ),
                     const Spacer(
-                      flex: 2,
-                    ),
-                    CircleAvatar(
-                      backgroundColor: Colors.grey,
-                      minRadius: 25,
-                      child: const Icon(
-                        Icons.person,
-                        color: Colors.white,
-                        size: 35,
-                      ),
+                      flex: 10,
                     ),
                   ],
                 ),
-                const SizedBox(
-                  height: 40,
+                sizedBoxSpacer(),
+                PrimaryButton(
+                  onPressed: () {
+                    final storage = SecureStorage();
+                    storage.deleteAll();
+                  },
+                  buttonText: 'Logout',
+                  isHalfSize: true,
+                  isLoading: true,
                 ),
                 Divider(
                   color: Colors.white.withOpacity(0.1),
                   thickness: 1,
                 ),
-                SizedBox(height: 20),
+                sizedBoxSpacer(),
+                Text(
+                  'Menu',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white.withOpacity(0.6),
+                  ),
+                ),
+                sizedBoxSpacer(),
                 DrawerButton(
                     ontap: () {
                       // context.replaceRoute(HomeScreen());
                     },
-                    title: "home"),
-                SizedBox(height: 20),
-                DrawerButton(ontap: () {}, title: "my_appoinments"),
-                SizedBox(height: 20),
-                DrawerButton(ontap: () {}, title: "my_doctor"),
-                SizedBox(height: 20),
+                    title: "Dashboard",
+                    leadIcon: Icons.bar_chart_rounded),
+                sizedBoxSpacer(),
                 DrawerButton(
-                    ontap: () {
-                      // context.pushRoute(PregnancyDetails());
-                    },
-                    title: "pregnancy_details"),
-                SizedBox(height: 20),
+                  ontap: () {},
+                  title: "Feed",
+                  leadIcon: Icons.analytics_outlined,
+                ),
+                sizedBoxSpacer(),
                 DrawerButton(
-                    ontap: () {
-                      // context.pushRoute(PersonalDetailsScreen());
-                    },
-                    title: "personal_details"),
-                SizedBox(height: 20),
+                  ontap: () {},
+                  title: "User Account",
+                  leadIcon: Icons.person,
+                ),
+                sizedBoxSpacer(),
+                DrawerButton(
+                    ontap: () {},
+                    title: "Members",
+                    leadIcon: Icons.people_outline_rounded),
+                sizedBoxSpacer(),
+                DrawerButton(
+                    ontap: () {},
+                    title: "Startups",
+                    leadIcon: Icons.star_outline_outlined),
+                sizedBoxSpacer(),
+                DrawerButton(
+                  ontap: () {
+                    // context.pushRoute(PersonalDetailsScreen());
+                  },
+                  title: "Events",
+                  leadIcon: Icons.calendar_month_outlined,
+                ),
+                sizedBoxSpacer(),
                 DrawerButton(
                     ontap: () {
                       // context.pushRoute(BasicInfo());
                     },
-                    title: "settings"),
-                SizedBox(height: 20),
+                    title: "Forums",
+                    leadIcon: Icons.format_paint_outlined),
+                sizedBoxSpacer(),
                 DrawerButton(
                     ontap: () {
                       // context.pushRoute(RemindersScreen());
                     },
-                    title: "reminders"),
-                SizedBox(height: 20),
-                DrawerButton(
-                    ontap: () {
-                      final storage = SecureStorage();
-                      storage.deleteAll();
-                      // context.replaceRoute(const OnBoardingScreen());
-                      // context.replaceRouteonst OnBoardingScreen());
-                    },
-                    title: "logout"),
+                    title: "Join Startup",
+                    leadIcon: Icons.shopping_bag_rounded),
+                sizedBoxSpacer(),
+                // DrawerButton(
+                //     ontap: () {
+                //       final storage = SecureStorage();
+                //       storage.deleteAll();
+                //       // context.replaceRoute(const OnBoardingScreen());
+                //       // context.replaceRouteonst OnBoardingScreen());
+                //     },
+                //     title: "logout"),
                 Expanded(child: SizedBox()),
               ],
             ),
@@ -144,6 +193,8 @@ class _MyDrawer2State extends State<MyDrawer> {
       ),
     );
   }
+
+  SizedBox sizedBoxSpacer() => const SizedBox(height: 15);
 }
 
 class DrawerButton extends StatelessWidget {
@@ -151,26 +202,37 @@ class DrawerButton extends StatelessWidget {
     Key? key,
     required this.ontap,
     required this.title,
+    required this.leadIcon,
   }) : super(key: key);
 
   final void Function()? ontap;
   final String title;
-
+  final IconData leadIcon;
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: TextButton(
-        onPressed: ontap,
-        child: Text(
-          title,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        IconButton(
+            onPressed: ontap,
+            icon: Icon(
+              leadIcon,
+              size: 20,
+              color: Colors.white.withOpacity(0.6),
+            )),
+        TextButton(
+          onPressed: ontap,
+          child: Text(
+            title,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
-      ),
+      ],
     );
   }
 }

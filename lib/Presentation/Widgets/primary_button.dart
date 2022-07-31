@@ -27,7 +27,7 @@ class PrimaryButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: disabled == true || isLoading == true ? () {} : onPressed,
       child: SizedBox(
-        width: mediaquery.width * (isHalfSize != null ? 0.35 : 0.8),
+        width: mediaquery.width * (isHalfSize != null ? 0.3 : 0.8),
         child: FittedBox(
           fit: BoxFit.scaleDown,
           child: Column(
@@ -78,14 +78,15 @@ class PrimaryButton extends StatelessWidget {
           ? ElevatedButton.styleFrom(
               primary: const Color(0xff7750f8),
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30)),
+                  borderRadius:
+                      BorderRadius.circular(isHalfSize != null ? 10 : 30)),
               padding: const EdgeInsets.all(14),
               elevation: 0,
             )
           : ElevatedButton.styleFrom(
               primary: const Color(0xff7750f8),
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30)),
+                  borderRadius: BorderRadius.circular(isHalfSize != null ? 10 : 30)),
               padding: const EdgeInsets.all(14),
               elevation: 0,
               onSurface: Colors.grey,

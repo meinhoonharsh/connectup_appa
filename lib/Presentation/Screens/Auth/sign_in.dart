@@ -290,6 +290,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 import 'package:connect_up/Constants/colors.dart';
 import 'package:connect_up/Constants/locations.dart';
+import 'package:connect_up/Presentation/Widgets/drawer.dart';
 import 'package:connect_up/Presentation/Widgets/primary_button.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -303,8 +304,11 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool isLogin = true;
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
+
   bool rememberMe = true;
   final _formKey = GlobalKey<FormState>();
+  TextEditingController confirmPasswordController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController emailController = TextEditingController();
 
@@ -325,8 +329,11 @@ class _LoginScreenState extends State<LoginScreen> {
     final mediaquery = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.blue, key: _scaffoldKey,
+
         // appBar: AppBar(),
+        drawer: const MyDrawer(),
+
         body: SingleChildScrollView(
           child: GestureDetector(
             onTap: () {
@@ -529,10 +536,16 @@ class _LoginScreenState extends State<LoginScreen> {
                             style: TextStyle(
                               color: Colors.white,
                             ),
-                            controller: passwordController,
+                            controller: confirmPasswordController,
                             validator: (val) {
+                              if (isLogin) {
+                                return null;
+                              }
                               if (val!.isEmpty) {
                                 return 'Field can not be empty';
+                              }
+                              if (val.toString() != passwordController.text) {
+                                return 'Password should be same!';
                               }
                               // RegExp emailRegex = RegExp(
                               //     r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
@@ -576,7 +589,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         //   ],
                         // ),
 
-                         const SizedBox(height: 40),
+                        const SizedBox(height: 40),
                         PrimaryButton(
                             onPressed: () {},
                             buttonText: isLogin ? "Login" : "Register"),
@@ -631,7 +644,9 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                               child: Center(
                                 child: IconButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      _scaffoldKey.currentState!.openDrawer();
+                                    },
                                     icon: const Icon(
                                       Icons.g_mobiledata,
                                       color: Colors.white,
