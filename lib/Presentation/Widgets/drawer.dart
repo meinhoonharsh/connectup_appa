@@ -54,13 +54,63 @@ class _MyDrawer2State extends State<MyDrawer> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     // const Spacer(flex: 1),
-                    CircleAvatar(
-                      backgroundColor: Colors.grey,
-                      minRadius: 25,
-                      child: const Icon(
-                        Icons.person,
-                        color: Colors.white,
-                        size: 35,
+                    // CircleAvatar(
+                    //   backgroundColor: Colors.grey,
+                    //   minRadius: 25,
+                    //   child: const Icon(
+                    //     Icons.person,
+                    //     color: Colors.white,
+                    //     size: 35,
+                    //   ),
+                    // ),
+                    ClipPath(
+                      clipper: HexagonClipper(),
+                      child: Container(
+                        width: 60,
+
+                        /// controll the size and color
+                        height: 60,
+                        decoration: BoxDecoration(
+                          color: Colors.green,
+                          // color: Colors.grey,
+                          // borderRadius: BorderRadius.circular(25),
+                        ),
+                        child: Center(
+                          child: ClipPath(
+                            clipper: HexagonClipper(),
+                            child: Container(
+                              width: 50,
+
+                              /// controll the size and color
+                              height: 50,
+                              decoration: BoxDecoration(
+                                color: Colors.grey,
+                                // borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: Center(
+                                child: CircleAvatar(
+                                  backgroundColor: Colors.grey,
+                                  minRadius: 25,
+                                  child: const Icon(
+                                    Icons.person,
+                                    color: Colors.white,
+                                    size: 35,
+                                  ),
+                                ),
+                                // ClipPath(
+                                //   clipper: HexagonClipper(),
+                                //   child: Container(
+                                //     width: 45,
+
+                                //     /// controll the size and color
+                                //     height: 45,
+                                //     color: Colors.amber,
+                                //   ),
+                                // ),
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                     const Spacer(flex: 1),
@@ -234,5 +284,55 @@ class DrawerButton extends StatelessWidget {
         ),
       ],
     );
+  }
+}
+
+class RPSCustomPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    Paint paint0 = Paint()
+      ..color = Colors.green
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 1;
+
+    Path path0 = Path();
+    path0.moveTo(size.width * 0.4484802, size.height * 0.3452079);
+    path0.lineTo(size.width * 0.4937050, size.height * 0.3001905);
+    path0.lineTo(size.width * 0.5395414, size.height * 0.3419515);
+    path0.lineTo(size.width * 0.5398651, size.height * 0.4376328);
+    path0.lineTo(size.width * 0.4937050, size.height * 0.4838799);
+    path0.lineTo(size.width * 0.4487410, size.height * 0.4312933);
+    path0.lineTo(size.width * 0.4484802, size.height * 0.3452079);
+    path0.close();
+
+    canvas.drawPath(path0, paint0);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return true;
+  }
+}
+
+class HexagonClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    Path path = Path();
+
+    path
+      ..moveTo(size.width / 2, 0) // moving to topCenter 1st, then draw the path
+      ..lineTo(size.width, size.height * .25)
+      ..lineTo(size.width, size.height * .75)
+      ..lineTo(size.width * .5, size.height)
+      ..lineTo(0, size.height * .75)
+      ..lineTo(0, size.height * .25)
+      ..close();
+
+    return path;
+  }
+
+  @override
+  bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
+    return false;
   }
 }
