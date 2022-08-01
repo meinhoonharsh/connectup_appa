@@ -63,54 +63,64 @@ class _MyDrawer2State extends State<MyDrawer> {
                     //     size: 35,
                     //   ),
                     // ),
-                    ClipPath(
-                      clipper: HexagonClipper(),
-                      child: Container(
-                        width: 60,
+                    // ClipPath(
+                    //   clipper: HexagonClipper(),
+                    //   child: Container(
+                    //     width: 60,
 
-                        /// controll the size and color
-                        height: 60,
-                        decoration: BoxDecoration(
-                          color: Colors.green,
-                          // color: Colors.grey,
-                          // borderRadius: BorderRadius.circular(25),
-                        ),
-                        child: Center(
-                          child: ClipPath(
-                            clipper: HexagonClipper(),
-                            child: Container(
-                              width: 50,
+                    //     /// controll the size and color
+                    //     height: 60,
+                    //     decoration: BoxDecoration(
+                    //       color: Colors.green,
+                    //       // color: Colors.grey,
+                    //       // borderRadius: BorderRadius.circular(25),
+                    //     ),
+                    //     child: Center(
+                    //       child: ClipPath(
+                    //         clipper: HexagonClipper(),
+                    //         child: Container(
+                    //           width: 50,
 
-                              /// controll the size and color
-                              height: 50,
-                              decoration: BoxDecoration(
-                                color: Colors.grey,
-                                // borderRadius: BorderRadius.circular(20),
-                              ),
-                              child: Center(
-                                child: CircleAvatar(
-                                  backgroundColor: Colors.grey,
-                                  minRadius: 25,
-                                  child: const Icon(
-                                    Icons.person,
-                                    color: Colors.white,
-                                    size: 35,
-                                  ),
-                                ),
-                                // ClipPath(
-                                //   clipper: HexagonClipper(),
-                                //   child: Container(
-                                //     width: 45,
+                    //           /// controll the size and color
+                    //           height: 50,
+                    //           decoration: BoxDecoration(
+                    //             color: Colors.grey,
+                    //             // borderRadius: BorderRadius.circular(20),
+                    //           ),
+                    //           child: Center(
+                    //             child: CircleAvatar(
+                    //               backgroundColor: Colors.grey,
+                    //               minRadius: 25,
+                    //               child: const Icon(
+                    //                 Icons.person,
+                    //                 color: Colors.white,
+                    //                 size: 35,
+                    //               ),
+                    //             ),
+                    //             // ClipPath(
+                    //             //   clipper: HexagonClipper(),
+                    //             //   child: Container(
+                    //             //     width: 45,
 
-                                //     /// controll the size and color
-                                //     height: 45,
-                                //     color: Colors.amber,
-                                //   ),
-                                // ),
-                              ),
-                            ),
-                          ),
-                        ),
+                    //             //     /// controll the size and color
+                    //             //     height: 45,
+                    //             //     color: Colors.amber,
+                    //             //   ),
+                    //             // ),
+                    //           ),
+                    //         ),
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
+
+                    CircleAvatar(
+                      backgroundColor: Colors.grey,
+                      minRadius: 25,
+                      child: const Icon(
+                        Icons.person,
+                        color: Colors.white,
+                        size: 35,
                       ),
                     ),
                     const Spacer(flex: 1),

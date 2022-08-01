@@ -10,11 +10,9 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
 
-import 'Routes/routes.gr.dart'; 
+import 'Routes/routes.gr.dart';
 
 // flutter packages pub run build_runner watch
-
-
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -68,9 +66,8 @@ class MyApp extends StatelessWidget {
 
         title: 'homepage',
         debugShowCheckedModeBanner: false,
-        routerDelegate: _appRouter.delegate(initialRoutes: [
-          isLoggedIn ? LoginScreen() : LoginScreen()
-        ]),
+        routerDelegate: _appRouter.delegate(
+            initialRoutes: [isLoggedIn ? LoginScreen() : LoginScreen()]),
 
         // routerDelegate: _appRouter.delegate(),
 

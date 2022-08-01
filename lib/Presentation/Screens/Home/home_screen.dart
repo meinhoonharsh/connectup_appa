@@ -112,7 +112,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           bottomNavigationBar: MyBottomNavigationBar(
-              currentIndex: 0), // backgroundColor: Colors.black87,
+              currentIndex: 0, mediaquery: mediaquery,), // backgroundColor: Colors.black87,
           body: Column(
             children: [
               Expanded(
