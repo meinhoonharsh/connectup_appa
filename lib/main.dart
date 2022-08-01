@@ -18,8 +18,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-
-  // checking login status
+ 
 
   // final storage = await HydratedStorage.build();
   // hydrated storage is persisted across app restarts
