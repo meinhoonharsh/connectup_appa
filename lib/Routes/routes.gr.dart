@@ -13,7 +13,7 @@
 import 'package:auto_route/auto_route.dart' as _i4;
 import 'package:flutter/material.dart' as _i5;
 
-import '../Presentation/Screens/Auth/sign_in.dart' as _i3;
+import '../Presentation/Screens/Auth/login_and_register_screen.dart' as _i3;
 import '../Presentation/Screens/UserProfile/user_profile_screen.dart' as _i2;
 import '../Presentation/Widgets/comind_soon_page.dart' as _i1;
 
@@ -35,7 +35,7 @@ class AppRouter extends _i4.RootStackRouter {
     },
     LoginScreen.name: (routeData) {
       return _i4.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i3.LoginScreen());
+          routeData: routeData, child: const _i3.LoginAndRegisterScreen());
     }
   };
 
@@ -79,7 +79,7 @@ class UserProfileScreenArgs {
 }
 
 /// generated route for
-/// [_i3.LoginScreen]
+/// [_i3.LoginAndRegisterScreen]
 class LoginScreen extends _i4.PageRouteInfo<void> {
   const LoginScreen() : super(LoginScreen.name, path: '/login-screen');
 

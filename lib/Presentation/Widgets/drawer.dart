@@ -27,226 +27,228 @@ class _MyDrawer2State extends State<MyDrawer> {
           ),
           child: Padding(
             padding: const EdgeInsets.only(left: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                // cancelButton(context),
-                SizedBox(
-                  height: 40,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      IconButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          icon: Icon(
-                            Icons.arrow_back_sharp,
-                            color: Colors.white.withOpacity(0.6),
-                            size: 20,
-                          )),
-                    ],
-                  ),
-                ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    // const Spacer(flex: 1),
-                    // CircleAvatar(
-                    //   backgroundColor: Colors.grey,
-                    //   minRadius: 25,
-                    //   child: const Icon(
-                    //     Icons.person,
-                    //     color: Colors.white,
-                    //     size: 35,
-                    //   ),
-                    // ),
-                    // ClipPath(
-                    //   clipper: HexagonClipper(),
-                    //   child: Container(
-                    //     width: 60,
-
-                    //     /// controll the size and color
-                    //     height: 60,
-                    //     decoration: BoxDecoration(
-                    //       color: Colors.green,
-                    //       // color: Colors.grey,
-                    //       // borderRadius: BorderRadius.circular(25),
-                    //     ),
-                    //     child: Center(
-                    //       child: ClipPath(
-                    //         clipper: HexagonClipper(),
-                    //         child: Container(
-                    //           width: 50,
-
-                    //           /// controll the size and color
-                    //           height: 50,
-                    //           decoration: BoxDecoration(
-                    //             color: Colors.grey,
-                    //             // borderRadius: BorderRadius.circular(20),
-                    //           ),
-                    //           child: Center(
-                    //             child: CircleAvatar(
-                    //               backgroundColor: Colors.grey,
-                    //               minRadius: 25,
-                    //               child: const Icon(
-                    //                 Icons.person,
-                    //                 color: Colors.white,
-                    //                 size: 35,
-                    //               ),
-                    //             ),
-                    //             // ClipPath(
-                    //             //   clipper: HexagonClipper(),
-                    //             //   child: Container(
-                    //             //     width: 45,
-
-                    //             //     /// controll the size and color
-                    //             //     height: 45,
-                    //             //     color: Colors.amber,
-                    //             //   ),
-                    //             // ),
-                    //           ),
-                    //         ),
-                    //       ),
-                    //     ),
-                    //   ),
-                    // ),
-
-                    CircleAvatar(
-                      backgroundColor: Colors.grey,
-                      minRadius: 25,
-                      child: const Icon(
-                        Icons.person,
-                        color: Colors.white,
-                        size: 35,
-                      ),
-                    ),
-                    const Spacer(flex: 1),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  // cancelButton(context),
+                  SizedBox(
+                    height: 40,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Text(
-                          'Mrs. Lorem Ipsum',
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        SizedBox(height: 5),
-                        Text(
-                          'connectUp',
-                          style: TextStyle(
-                            color: Colors.white.withOpacity(0.8),
-                            fontSize: 12,
-                            // fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        // const SizedBox(height: 5),
-                        // InkWell(
-                        //   onTap: () {},
-                        //   child: Text(
-                        //     'view_and_edit_profile',
-                        //     style: TextStyle(
-                        //         decoration: TextDecoration.underline,
-                        //         color: Colors.white.withOpacity(0.8),
-                        //         fontSize: 12),
-                        //   ),
-                        // ),
+                        IconButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            icon: Icon(
+                              Icons.arrow_back_sharp,
+                              color: Colors.white.withOpacity(0.6),
+                              size: 20,
+                            )),
                       ],
                     ),
-                    const Spacer(
-                      flex: 10,
-                    ),
-                  ],
-                ),
-                sizedBoxSpacer(),
-                PrimaryButton(
-                  onPressed: () {
-                    final storage = SecureStorage();
-                    storage.deleteAll();
-                  },
-                  buttonText: 'Logout',
-                  isHalfSize: true,
-                  isLoading: true,
-                ),
-                Divider(
-                  color: Colors.white.withOpacity(0.1),
-                  thickness: 1,
-                ),
-                sizedBoxSpacer(),
-                Text(
-                  'Menu',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.white.withOpacity(0.6),
                   ),
-                ),
-                sizedBoxSpacer(),
-                DrawerButton(
-                    ontap: () {
-                      // context.replaceRoute(HomeScreen());
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      // const Spacer(flex: 1),
+                      // CircleAvatar(
+                      //   backgroundColor: Colors.grey,
+                      //   minRadius: 25,
+                      //   child: const Icon(
+                      //     Icons.person,
+                      //     color: Colors.white,
+                      //     size: 35,
+                      //   ),
+                      // ),
+                      // ClipPath(
+                      //   clipper: HexagonClipper(),
+                      //   child: Container(
+                      //     width: 60,
+            
+                      //     /// controll the size and color
+                      //     height: 60,
+                      //     decoration: BoxDecoration(
+                      //       color: Colors.green,
+                      //       // color: Colors.grey,
+                      //       // borderRadius: BorderRadius.circular(25),
+                      //     ),
+                      //     child: Center(
+                      //       child: ClipPath(
+                      //         clipper: HexagonClipper(),
+                      //         child: Container(
+                      //           width: 50,
+            
+                      //           /// controll the size and color
+                      //           height: 50,
+                      //           decoration: BoxDecoration(
+                      //             color: Colors.grey,
+                      //             // borderRadius: BorderRadius.circular(20),
+                      //           ),
+                      //           child: Center(
+                      //             child: CircleAvatar(
+                      //               backgroundColor: Colors.grey,
+                      //               minRadius: 25,
+                      //               child: const Icon(
+                      //                 Icons.person,
+                      //                 color: Colors.white,
+                      //                 size: 35,
+                      //               ),
+                      //             ),
+                      //             // ClipPath(
+                      //             //   clipper: HexagonClipper(),
+                      //             //   child: Container(
+                      //             //     width: 45,
+            
+                      //             //     /// controll the size and color
+                      //             //     height: 45,
+                      //             //     color: Colors.amber,
+                      //             //   ),
+                      //             // ),
+                      //           ),
+                      //         ),
+                      //       ),
+                      //     ),
+                      //   ),
+                      // ),
+            
+                      CircleAvatar(
+                        backgroundColor: Colors.grey,
+                        minRadius: 25,
+                        child: const Icon(
+                          Icons.person,
+                          color: Colors.white,
+                          size: 35,
+                        ),
+                      ),
+                      const Spacer(flex: 1),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Mrs. Lorem Ipsum',
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(height: 5),
+                          Text(
+                            'connectUp',
+                            style: TextStyle(
+                              color: Colors.white.withOpacity(0.8),
+                              fontSize: 12,
+                              // fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          // const SizedBox(height: 5),
+                          // InkWell(
+                          //   onTap: () {},
+                          //   child: Text(
+                          //     'view_and_edit_profile',
+                          //     style: TextStyle(
+                          //         decoration: TextDecoration.underline,
+                          //         color: Colors.white.withOpacity(0.8),
+                          //         fontSize: 12),
+                          //   ),
+                          // ),
+                        ],
+                      ),
+                      const Spacer(
+                        flex: 10,
+                      ),
+                    ],
+                  ),
+                  sizedBoxSpacer(),
+                  PrimaryButton(
+                    onPressed: () {
+                      final storage = SecureStorage();
+                      storage.deleteAll();
                     },
-                    title: "Dashboard",
-                    leadIcon: Icons.bar_chart_rounded),
-                sizedBoxSpacer(),
-                DrawerButton(
-                  ontap: () {},
-                  title: "Feed",
-                  leadIcon: Icons.analytics_outlined,
-                ),
-                sizedBoxSpacer(),
-                DrawerButton(
-                  ontap: () {},
-                  title: "User Account",
-                  leadIcon: Icons.person,
-                ),
-                sizedBoxSpacer(),
-                DrawerButton(
+                    buttonText: 'Logout',
+                    isHalfSize: true,
+                    isLoading: true,
+                  ),
+                  Divider(
+                    color: Colors.white.withOpacity(0.1),
+                    thickness: 1,
+                  ),
+                  sizedBoxSpacer(),
+                  Text(
+                    'Menu',
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.white.withOpacity(0.6),
+                    ),
+                  ),
+                  sizedBoxSpacer(),
+                  DrawerButton(
+                      ontap: () {
+                        // context.replaceRoute(HomeScreen());
+                      },
+                      title: "Dashboard",
+                      leadIcon: Icons.bar_chart_rounded),
+                  sizedBoxSpacer(),
+                  DrawerButton(
                     ontap: () {},
-                    title: "Members",
-                    leadIcon: Icons.people_outline_rounded),
-                sizedBoxSpacer(),
-                DrawerButton(
+                    title: "Feed",
+                    leadIcon: Icons.analytics_outlined,
+                  ),
+                  sizedBoxSpacer(),
+                  DrawerButton(
                     ontap: () {},
-                    title: "Startups",
-                    leadIcon: Icons.star_outline_outlined),
-                sizedBoxSpacer(),
-                DrawerButton(
-                  ontap: () {
-                    // context.pushRoute(PersonalDetailsScreen());
-                  },
-                  title: "Events",
-                  leadIcon: Icons.calendar_month_outlined,
-                ),
-                sizedBoxSpacer(),
-                DrawerButton(
+                    title: "User Account",
+                    leadIcon: Icons.person,
+                  ),
+                  sizedBoxSpacer(),
+                  DrawerButton(
+                      ontap: () {},
+                      title: "Members",
+                      leadIcon: Icons.people_outline_rounded),
+                  sizedBoxSpacer(),
+                  DrawerButton(
+                      ontap: () {},
+                      title: "Startups",
+                      leadIcon: Icons.star_outline_outlined),
+                  sizedBoxSpacer(),
+                  DrawerButton(
                     ontap: () {
-                      // context.pushRoute(BasicInfo());
+                      // context.pushRoute(PersonalDetailsScreen());
                     },
-                    title: "Forums",
-                    leadIcon: Icons.format_paint_outlined),
-                sizedBoxSpacer(),
-                DrawerButton(
-                    ontap: () {
-                      // context.pushRoute(RemindersScreen());
-                    },
-                    title: "Join Startup",
-                    leadIcon: Icons.shopping_bag_rounded),
-                sizedBoxSpacer(),
-                // DrawerButton(
-                //     ontap: () {
-                //       final storage = SecureStorage();
-                //       storage.deleteAll();
-                //       // context.replaceRoute(const OnBoardingScreen());
-                //       // context.replaceRouteonst OnBoardingScreen());
-                //     },
-                //     title: "logout"),
-                Expanded(child: SizedBox()),
-              ],
+                    title: "Events",
+                    leadIcon: Icons.calendar_month_outlined,
+                  ),
+                  sizedBoxSpacer(),
+                  DrawerButton(
+                      ontap: () {
+                        // context.pushRoute(BasicInfo());
+                      },
+                      title: "Forums",
+                      leadIcon: Icons.format_paint_outlined),
+                  sizedBoxSpacer(),
+                  DrawerButton(
+                      ontap: () {
+                        // context.pushRoute(RemindersScreen());
+                      },
+                      title: "Join Startup",
+                      leadIcon: Icons.shopping_bag_rounded),
+                  sizedBoxSpacer(),
+                  // DrawerButton(
+                  //     ontap: () {
+                  //       final storage = SecureStorage();
+                  //       storage.deleteAll();
+                  //       // context.replaceRoute(const OnBoardingScreen());
+                  //       // context.replaceRouteonst OnBoardingScreen());
+                  //     },
+                  //     title: "logout"),
+                  Expanded(child: SizedBox()),
+                ],
+              ),
             ),
           ),
         ),

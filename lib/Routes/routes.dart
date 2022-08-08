@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:connect_up/Presentation/Screens/Auth/sign_in.dart';
+import 'package:connect_up/Presentation/Screens/Auth/login_and_register_screen.dart';
 import 'package:connect_up/Presentation/Screens/UserProfile/user_profile_screen.dart';
 import 'package:connect_up/Presentation/Widgets/comind_soon_page.dart';
 
@@ -13,7 +13,7 @@ import 'package:connect_up/Presentation/Widgets/comind_soon_page.dart';
     // AutoRoute(page: HomeScreen),
     AutoRoute(page: ComingSoonScreen),
     AutoRoute(page: UserProfileScreen),
-    AutoRoute(page: LoginScreen),
+    AutoRoute(page: LoginAndRegisterScreen),
 
     // AutoRoute(page: SignUpScreen),
     // AutoRoute(page: UserProfileScreen),
