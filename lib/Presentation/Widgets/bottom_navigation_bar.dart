@@ -35,11 +35,11 @@ class MyBottomNavigationBar extends StatelessWidget {
 
               break;
             case 3:
-              context.pushRoute(UserProfileScreen());
-
               break;
             case 4:
+              context.pushRoute(UserProfileScreen());
               // context.pushRoute(UserProfileScreen());
+              
 
               break;
             default:
@@ -56,8 +56,8 @@ class MyBottomNavigationBar extends StatelessWidget {
           FloatingNavbarItem(
               icon: Icons.emoji_emotions_outlined, title: 'Explore'),
           FloatingNavbarItem(icon: Icons.chat_sharp, title: 'Chats'),
-          FloatingNavbarItem(icon: Icons.notifications, title: 'Profile'),
           FloatingNavbarItem(icon: Icons.settings, title: 'Settings'),
+          FloatingNavbarItem(icon: Icons.person, title: 'Profile'),
         ],
       ),
     );

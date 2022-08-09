@@ -86,7 +86,8 @@ class PrimaryButton extends StatelessWidget {
           : ElevatedButton.styleFrom(
               primary: const Color(0xff7750f8),
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(isHalfSize != null ? 10 : 30)),
+                  borderRadius:
+                      BorderRadius.circular(isHalfSize != null ? 10 : 30)),
               padding: const EdgeInsets.all(14),
               elevation: 0,
               onSurface: Colors.grey,
@@ -102,6 +103,7 @@ class SecondryButton extends StatelessWidget {
   final bool? isLoading;
   final bool? isHalfSize;
   final String? subText;
+  final Color? color;
   const SecondryButton({
     Key? key,
     required this.onPressed,
@@ -110,6 +112,7 @@ class SecondryButton extends StatelessWidget {
     this.isLoading,
     this.isHalfSize,
     this.subText,
+    this.color,
   }) : super(key: key);
 
   @override
@@ -168,16 +171,16 @@ class SecondryButton extends StatelessWidget {
       ),
       style: disabled == false
           ? ElevatedButton.styleFrom(
-              primary: const Color(0xffFF9333),
+              primary: color ?? const Color(0xffFF9333),
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(5)),
+                  borderRadius: BorderRadius.circular(20)),
               padding: const EdgeInsets.all(14),
               elevation: 0,
             )
           : ElevatedButton.styleFrom(
-              primary: const Color(0xffFF9333),
+              primary: color ?? const Color(0xffFF9333),
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(5)),
+                  borderRadius: BorderRadius.circular(20)),
               padding: const EdgeInsets.all(14),
               elevation: 0,
               onSurface: Colors.grey,

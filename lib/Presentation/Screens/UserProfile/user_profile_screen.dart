@@ -4,12 +4,28 @@ import 'package:connect_up/Constants/locations.dart';
 import 'package:connect_up/Presentation/Widgets/bottom_navigation_bar.dart';
 import 'package:connect_up/Presentation/Widgets/comind_soon_page.dart';
 import 'package:connect_up/Presentation/Widgets/drawer.dart';
+import 'package:connect_up/Presentation/Widgets/primary_button.dart';
+import 'package:connect_up/Presentation/Widgets/user_post_card.dart';
 import 'package:flutter/material.dart';
 
-class UserProfileScreen extends StatelessWidget {
+class UserProfileScreen extends StatefulWidget {
   UserProfileScreen({Key? key}) : super(key: key);
+
+  @override
+  State<UserProfileScreen> createState() => _UserProfileScreenState();
+}
+
+class _UserProfileScreenState extends State<UserProfileScreen> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 
+ late ScrollController _scrollController;
+@override
+  void initState() {
+    _scrollController = ScrollController();
+    super.initState();
+  }
+
+// scroll controller for the list view
   @override
   Widget build(BuildContext context) {
     final mediaquery = MediaQuery.of(context).size;
@@ -42,22 +58,273 @@ class UserProfileScreen extends StatelessWidget {
           currentIndex: 3,
           mediaquery: mediaquery,
         ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              width: mediaquery.width * 0.8,
-              
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                color: Colors.white.withOpacity(0.5),
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                width: mediaquery.width * 0.87,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: Color.fromARGB(255, 43, 50, 68),
+                ),
+                child: Center(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      profileAndBackGroundImage(mediaquery),
+                      const SizedBox(height: 55),
+                      // const SizedBox(height: 20),
+
+                      Text(
+                        'ConnectUp',
+                        style: const TextStyle(
+                          fontSize: 20,
+                          color: Colors.white,
+                        ),
+                      ),
+                      Text(
+                        '@connectup',
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: Colors.white.withOpacity(0.5),
+                        ),
+                      ),
+                      // SizedBox(height: 20),
+                      Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Row(
+                          children: [
+                            IconButton(
+                                onPressed: () {
+                                  _scrollController.animateTo(-200,
+                                      duration:
+                                          const Duration(milliseconds: 500),
+                                      curve: Curves.easeInOut);
+                                },
+                                icon: const Icon(
+                                  Icons.arrow_back_ios,
+                                  size: 20,
+                                  color: Colors.white,
+                                )),
+                            SizedBox(
+                              height: 50,
+                              width: mediaquery.width * 0.5,
+                              child: ListView(
+                                controller: _scrollController,
+                                scrollDirection: Axis.horizontal,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: IconButton(
+                                        onPressed: () {},
+                                        icon: const Icon(
+                                          Icons.apple,
+                                          size: 30,
+                                          color: Colors.white,
+                                        )),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: IconButton(
+                                        onPressed: () {},
+                                        icon: const Icon(
+                                          Icons.mail,
+                                          size: 30,
+                                          color: Colors.white,
+                                        )),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: IconButton(
+                                        onPressed: () {},
+                                        icon: const Icon(
+                                          Icons.apple,
+                                          size: 30,
+                                          color: Colors.white,
+                                        )),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: IconButton(
+                                        onPressed: () {},
+                                        icon: const Icon(
+                                          Icons.mail,
+                                          size: 30,
+                                          color: Colors.white,
+                                        )),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: IconButton(
+                                        onPressed: () {},
+                                        icon: const Icon(
+                                          Icons.apple,
+                                          size: 30,
+                                          color: Colors.white,
+                                        )),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: IconButton(
+                                        onPressed: () {},
+                                        icon: const Icon(
+                                          Icons.mail,
+                                          size: 30,
+                                          color: Colors.white,
+                                        )),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            IconButton(
+                                onPressed: () {
+                                  _scrollController.animateTo(200,
+                                      duration:
+                                          const Duration(milliseconds: 500),
+                                      curve: Curves.easeInOut);
+                                },
+                                icon: const Icon(
+                                  Icons.arrow_forward_ios,
+                                  size: 20,
+                                  color: Colors.white,
+                                )),
+                          ],
+                        ),
+                      ),
+                      // SizedBox(height: 20),
+
+                      Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  '1',
+                                  style: const TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  'posts',
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    color: Colors.white.withOpacity(0.6),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            // verticle divider
+                            verticleLine(),
+
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  '1',
+                                  style: const TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  'Followers',
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    color: Colors.white.withOpacity(0.6),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            verticleLine(),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  '1',
+                                  style: const TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  'Visits',
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    color: Colors.white.withOpacity(0.6),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      SizedBox(height: 20),
+                      SecondryButton(
+                        onPressed: () {},
+                        buttonText: 'Follow',
+                        isHalfSize: true,
+                        color: Colors.green,
+                      ),
+                      SizedBox(height: 20),
+                    ],
+                  ),
+                ),
               ),
-              child: Center(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Stack(
+              UserPostCard(
+                mediaQuery: mediaquery,
+                title: 'title',
+                image: 'https://picsum.photos/200',
+                time: DateTime.now(),
+                name: 'Name',
+                description:
+                    // "It is discription It is discriptionIt is discriptionIt is discriptionIt is discriptionIt is discriptionIt is discriptionIt is discriptionIt is discriptionIt is discriptionIt is discription",
+                    "ConnectUp Post " * 50,
+                contentImage: "https://picsum.photos/200",
+              ),
+              SizedBox(height: 20),
+              UserPostCard(
+                mediaQuery: mediaquery,
+                title: 'title',
+                image: 'https://picsum.photos/200',
+                time: DateTime.now(),
+                name: 'Name',
+                description:
+                    // "It is discription It is discriptionIt is discriptionIt is discriptionIt is discriptionIt is discriptionIt is discriptionIt is discriptionIt is discriptionIt is discriptionIt is discription",
+                    "ConnectUp Post " * 50,
+                contentImage: "https://picsum.photos/200",
+              ),
+              SizedBox(height: 20),
+              UserPostCard(
+                mediaQuery: mediaquery,
+                title: 'title',
+                image: 'https://picsum.photos/200',
+                time: DateTime.now(),
+                name: 'Name',
+                description:
+                    // "It is discription It is discriptionIt is discriptionIt is discriptionIt is discriptionIt is discriptionIt is discriptionIt is discriptionIt is discriptionIt is discriptionIt is discription",
+                    "ConnectUp Post " * 50,
+                contentImage: "https://picsum.photos/200",
+              ),
+              SizedBox(height: 20),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Stack profileAndBackGroundImage(Size mediaquery) {
+    return Stack(
                       clipBehavior: Clip.none,
                       children: [
                         Padding(
@@ -66,13 +333,7 @@ class UserProfileScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(20),
                             child: SizedBox(
                               height: mediaquery.height * 0.15,
-                              width: mediaquery.width * 0.8,
-                              // decoration: BoxDecoration(
-                              //   color: Color(0xff0A192F),
-                              //   borderRadius: BorderRadius.vertical(
-                              //       bottom: Radius.elliptical(
-                              //           MediaQuery.of(context).size.width * 0.5, 50.0)),
-                              // ),
+                              width: mediaquery.width * 0.87,
                               child: Image.network(
                                 'https://picsum.photos/200',
                                 fit: BoxFit.cover,
@@ -80,6 +341,7 @@ class UserProfileScreen extends StatelessWidget {
                             ),
                           ),
                         ),
+
                         // Positioned(
                         //   top: 10,
                         //   child: SizedBox(
@@ -112,7 +374,7 @@ class UserProfileScreen extends StatelessWidget {
 
                         Positioned(
                           bottom: -40,
-                          left: mediaquery.width * 0.8 * 0.5 - 55,
+                          left: mediaquery.width * 0.87 * 0.5 - 55,
                           child: Container(
                             height: 110,
                             width: 110,
@@ -131,126 +393,14 @@ class UserProfileScreen extends StatelessWidget {
                           ),
                         ),
                       ],
-                    ),
-                    const SizedBox(height: 75),
-                    const SizedBox(height: 20),
-                    Container(
-                      height: 50,
-                      width: mediaquery.width * 0.85,
-                      decoration: BoxDecoration(
-                        color: Color(0xffE6F1FF),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text(
-                            '1M Followers',
-                            style: const TextStyle(
-                              fontSize: 15,
-                              color: Color(0xff0A192F),
-                            ),
-                          ),
-                          Text(
-                            '10 Following',
-                            style: const TextStyle(
-                              fontSize: 15,
-                              color: Color(0xff0A192F),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 40,
-                      width: mediaquery.width * 0.65,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          IconButton(
-                              onPressed: () {},
-                              icon: const Icon(
-                                Icons.workspaces_outlined,
-                                size: 30,
-                              )),
-                          IconButton(
-                              onPressed: () {},
-                              icon: const Icon(
-                                Icons.wechat_outlined,
-                                size: 30,
-                              )),
-                          IconButton(
-                              onPressed: () {},
-                              icon: const Icon(
-                                Icons.facebook,
-                                size: 30,
-                              )),
-                        ],
-                      ),
-                    ),
-                    // SizedBox(
-                    //   height: mediaquery.height * 0.4,
-                    //   width: mediaquery.width,
-                    //   child: DefaultTabController(
-                    //     length: 2,
-                    //     initialIndex: 0,
-                    //     child: Scaffold(
-                    //       // // backgroundColor: Colors.black87,
+                    );
+  }
 
-                    //       body: Column(
-                    //         children: [
-                    //           SizedBox(
-                    //             height: 80,
-                    //             child: AppBar(
-                    //               backgroundColor: Colors.white,
-                    //               elevation: 0,
-                    //               bottom: TabBar(
-                    //                 labelColor: Color(0xff0A192F),
-                    //                 indicatorColor: Colors.black,
-                    //                 tabs: [
-                    //                   Tab(
-                    //                     text: 'POSTS',
-                    //                   ),
-                    //                   Tab(
-                    //                     text: 'PROJECTS',
-                    //                   ),
-                    //                 ],
-                    //               ),
-                    //             ),
-                    //           ),
-                    //           Expanded(
-                    //             child: TabBarView(
-                    //               children: [
-                    //                 // first tab bar view widget
-                    //                 ComingSoonWidget(),
-                    //                 //  ComingSoonWidget(),
-
-                    //                 // second tab bar viiew widget
-                    //                 Container(
-                    //                   color: Colors.white,
-                    //                   child: Center(
-                    //                     child: Text(
-                    //                       'projects',
-                    //                     ),
-                    //                   ),
-                    //                 ),
-                    //               ],
-                    //             ),
-                    //           ),
-                    //         ],
-                    //       ),
-                    //     ),
-                    //   ),
-                    // ),
-
-                    SizedBox(height: mediaquery.height * 0.1),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
+  Container verticleLine() {
+    return Container(
+      height: 25,
+      width: 2,
+      color: Colors.white.withOpacity(0.3),
     );
   }
 }

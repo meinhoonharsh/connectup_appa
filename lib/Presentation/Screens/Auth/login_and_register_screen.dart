@@ -16,8 +16,7 @@ class LoginAndRegisterScreen extends StatefulWidget {
 
 class _LoginAndRegisterScreenState extends State<LoginAndRegisterScreen> {
   bool isLogin = true;
-  final _scaffoldKey =  GlobalKey<ScaffoldState>();
-  
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
 
   bool rememberMe = true;
   final _formKey = GlobalKey<FormState>();
@@ -25,7 +24,7 @@ class _LoginAndRegisterScreenState extends State<LoginAndRegisterScreen> {
   TextEditingController passwordController = TextEditingController();
   TextEditingController emailController = TextEditingController();
 
-   // for testing purpose only in debug mode
+  // for testing purpose only in debug mode
 
   @override
   void initState() {
@@ -343,56 +342,52 @@ class _LoginAndRegisterScreenState extends State<LoginAndRegisterScreen> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
-                                  Container(
-                                    // height: 50,
-                                    // width: 50,
-                                    decoration: BoxDecoration(
-                                      color: Colors.red,
-                                    ),
-                                    child: Center(
-                                      child: IconButton(
-                                          onPressed: () {},
-                                          icon: const Icon(
-                                            Icons.g_mobiledata,
-                                            color: Colors.white,
-                                            size: 40,
-                                          )),
-                                    ),
+                                  InkWell(
+                                    onTap: () {},
+                                    child: Container(
+                                        height: 50,
+                                        width: 50,
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+
+                                        ),
+                                        child: Image.asset(AppIcons.google,
+                                            fit: BoxFit.cover)),
                                   ),
-                                  Container(
-                                    // height: 50,
-                                    // width: 50,
-                                    decoration: BoxDecoration(
-                                      color: Colors.red,
-                                    ),
-                                    child: Center(
-                                      child: IconButton(
-                                          onPressed: () {},
-                                          icon: const Icon(
-                                            Icons.g_mobiledata,
-                                            color: Colors.white,
-                                            size: 40,
-                                          )),
-                                    ),
+                                  InkWell(
+                                    onTap: () {},
+                                    child: Container(
+                                        height: 50,
+                                        width: 50,
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+
+                                                            borderRadius: BorderRadius.circular(10),
+                                        ),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Image.asset(AppIcons.github,
+                                              fit: BoxFit.cover),
+                                        )),
                                   ),
-                                  Container(
-                                    // height: 50,
-                                    // width: 50,
-                                    decoration: BoxDecoration(
-                                      color: Colors.red,
-                                    ),
-                                    child: Center(
-                                      child: IconButton(
-                                          onPressed: () {
-                                            _scaffoldKey.currentState!
-                                                .openDrawer();
-                                          },
-                                          icon: const Icon(
-                                            Icons.g_mobiledata,
-                                            color: Colors.white,
-                                            size: 40,
-                                          )),
-                                    ),
+                                  InkWell(
+                                    onTap: () {},
+                                    child: Container(
+                                        height: 50,
+                                        width: 50,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+
+                                          color: Colors.white,
+                                        ),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Image.asset(AppIcons.linkedin,
+                                              fit: BoxFit.cover),
+                                        )),
                                   ),
                                 ],
                               ),
