@@ -15,23 +15,22 @@ class CommingSoonLabel extends StatelessWidget {
       children: [
         child,
         Positioned(
-          right: 5,
+          right: -1,
           top: 0,
           child: Container(
-            height: 20,
-            width: 60,
+            height: 15,
+            width: 40,
             decoration: BoxDecoration(
-              color: Colors.amber,
+              color: Colors.amber.withOpacity(0.5),
               borderRadius: BorderRadius.circular(10),
             ),
             child: Padding(
               padding: const EdgeInsets.all(5.0),
-              child: FittedBox(
-                child: Text(
-                  'Coming Soon',
-                  style: const TextStyle(
-                    color: Colors.black,
-                  ),
+              child: Text(
+                'Coming Soon',
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 5
                 ),
               ),
             ),

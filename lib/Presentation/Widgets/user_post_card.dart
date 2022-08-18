@@ -1,5 +1,4 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-import 'package:connect_up/Constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:timeago/timeago.dart' as timeago;
@@ -99,8 +98,6 @@ class _UserPostCardState extends State<UserPostCard> {
                             //     ),
                             //   ],
                             // );
-
-
                           },
                           icon: const Icon(
                             Icons.more_horiz_outlined,

@@ -53,6 +53,8 @@ dependencies:
   cached_network_image: ^3.2.1
   google_sign_in: ^5.3.3
   timeago_flutter: ^1.1.0
+  # simple_auth: ^2.0.10
+  # simple_auth_flutter: ^2.0.11
   # flutter_launcher_icons: ^0.10.0
 
 dev_dependencies:
@@ -60,6 +62,7 @@ dev_dependencies:
     sdk: flutter
 
   flutter_launcher_icons: ^0.9.3
+
   auto_route_generator:
   build_runner:
   # The "flutter_lints" package below contains a set of recommended lints to
@@ -68,6 +71,8 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+  # simple_auth_generator:
+  # build_runner: ^0.8.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

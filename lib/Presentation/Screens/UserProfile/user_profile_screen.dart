@@ -3,6 +3,7 @@ import 'package:connect_up/Constants/colors.dart';
 import 'package:connect_up/Constants/locations.dart';
 import 'package:connect_up/Presentation/Widgets/bottom_navigation_bar.dart';
 import 'package:connect_up/Presentation/Widgets/comind_soon_page.dart';
+import 'package:connect_up/Presentation/Widgets/coming_soon_label.dart';
 import 'package:connect_up/Presentation/Widgets/drawer.dart';
 import 'package:connect_up/Presentation/Widgets/primary_button.dart';
 import 'package:connect_up/Presentation/Widgets/user_post_card.dart';
@@ -18,8 +19,8 @@ class UserProfileScreen extends StatefulWidget {
 class _UserProfileScreenState extends State<UserProfileScreen> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 
- late ScrollController _scrollController;
-@override
+  late ScrollController _scrollController;
+  @override
   void initState() {
     _scrollController = ScrollController();
     super.initState();
@@ -280,16 +281,18 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                   ),
                 ),
               ),
-              UserPostCard(
-                mediaQuery: mediaquery,
-                title: 'title',
-                image: 'https://picsum.photos/200',
-                time: DateTime.now(),
-                name: 'Name',
-                description:
-                    // "It is discription It is discriptionIt is discriptionIt is discriptionIt is discriptionIt is discriptionIt is discriptionIt is discriptionIt is discriptionIt is discriptionIt is discription",
-                    "ConnectUp Post " * 50,
-                contentImage: "https://picsum.photos/200",
+              CommingSoonLabel(
+                child: UserPostCard(
+                  mediaQuery: mediaquery,
+                  title: 'title',
+                  image: 'https://picsum.photos/200',
+                  time: DateTime.now(),
+                  name: 'Name',
+                  description:
+                      // "It is discription It is discriptionIt is discriptionIt is discriptionIt is discriptionIt is discriptionIt is discriptionIt is discriptionIt is discriptionIt is discriptionIt is discription",
+                      "ConnectUp Post " * 50,
+                  contentImage: "https://picsum.photos/200",
+                ),
               ),
               SizedBox(height: 20),
               UserPostCard(
@@ -325,75 +328,75 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
 
   Stack profileAndBackGroundImage(Size mediaquery) {
     return Stack(
-                      clipBehavior: Clip.none,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(15.0),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(20),
-                            child: SizedBox(
-                              height: mediaquery.height * 0.15,
-                              width: mediaquery.width * 0.87,
-                              child: Image.network(
-                                'https://picsum.photos/200',
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                        ),
+      clipBehavior: Clip.none,
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: SizedBox(
+              height: mediaquery.height * 0.15,
+              width: mediaquery.width * 0.87,
+              child: Image.network(
+                'https://picsum.photos/200',
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+        ),
 
-                        // Positioned(
-                        //   top: 10,
-                        //   child: SizedBox(
-                        //     height: 100,
-                        //     width: mediaquery.width,
-                        //     child: Row(
-                        //       children: [
-                        //         const Spacer(
-                        //           flex: 2,
-                        //         ),
-                        //         Text(
-                        //           data,
-                        //           style: const TextStyle(
-                        //               color: Colors.white, fontSize: 15),
-                        //         ),
-                        //         const Spacer(
-                        //           flex: 1,
-                        //         ),
-                        //         IconButton(
-                        //             onPressed: () {},
-                        //             icon: const Icon(
-                        //               Icons.settings,
-                        //               color: Colors.white,
-                        //               size: 20,
-                        //             )),
-                        //       ],
-                        //     ),
-                        //   ),
-                        // ),
+        // Positioned(
+        //   top: 10,
+        //   child: SizedBox(
+        //     height: 100,
+        //     width: mediaquery.width,
+        //     child: Row(
+        //       children: [
+        //         const Spacer(
+        //           flex: 2,
+        //         ),
+        //         Text(
+        //           data,
+        //           style: const TextStyle(
+        //               color: Colors.white, fontSize: 15),
+        //         ),
+        //         const Spacer(
+        //           flex: 1,
+        //         ),
+        //         IconButton(
+        //             onPressed: () {},
+        //             icon: const Icon(
+        //               Icons.settings,
+        //               color: Colors.white,
+        //               size: 20,
+        //             )),
+        //       ],
+        //     ),
+        //   ),
+        // ),
 
-                        Positioned(
-                          bottom: -40,
-                          left: mediaquery.width * 0.87 * 0.5 - 55,
-                          child: Container(
-                            height: 110,
-                            width: 110,
-                            decoration: BoxDecoration(
-                                color: Colors.green, shape: BoxShape.circle),
-                            child: Padding(
-                              padding: const EdgeInsets.all(4.0),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(150),
-                                child: Image.network(
-                                  'https://picsum.photos/200',
-                                  fit: BoxFit.fill,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    );
+        Positioned(
+          bottom: -40,
+          left: mediaquery.width * 0.87 * 0.5 - 55,
+          child: Container(
+            height: 110,
+            width: 110,
+            decoration:
+                BoxDecoration(color: Colors.green, shape: BoxShape.circle),
+            child: Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(150),
+                child: Image.network(
+                  'https://picsum.photos/200',
+                  fit: BoxFit.fill,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
   }
 
   Container verticleLine() {

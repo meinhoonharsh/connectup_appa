@@ -199,12 +199,10 @@ class _MyDrawer2State extends State<MyDrawer> {
                           title: "Dashboard",
                           leadIcon: Icons.bar_chart_rounded),
                       sizedBoxSpacer(),
-                      CommingSoonLabel(
-                        child: DrawerButton(
-                          ontap: () {},
-                          title: "Feed",
-                          leadIcon: Icons.analytics_outlined,
-                        ),
+                      DrawerButton(
+                        ontap: () {},
+                        title: "Feed",
+                        leadIcon: Icons.analytics_outlined,
                       ),
                       sizedBoxSpacer(),
                       DrawerButton(
@@ -231,14 +229,13 @@ class _MyDrawer2State extends State<MyDrawer> {
                         leadIcon: Icons.calendar_month_outlined,
                       ),
                       sizedBoxSpacer(),
-                      CommingSoonLabel(
-                        child: DrawerButton(
+                      DrawerButton(
                             ontap: () {
                               // context.pushRoute(BasicInfo());
                             },
                             title: "Forums",
                             leadIcon: Icons.format_paint_outlined),
-                      ),
+
                       sizedBoxSpacer(),
                       DrawerButton(
                           ontap: () {
@@ -295,14 +292,16 @@ class DrawerButton extends StatelessWidget {
               size: 20,
               color: Colors.white.withOpacity(0.6),
             )),
-        TextButton(
-          onPressed: ontap,
-          child: Text(
-            title,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
+        CommingSoonLabel(
+          child: TextButton(
+            onPressed: ontap,
+            child: Text(
+              title,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
         ),
