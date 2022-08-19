@@ -31,7 +31,7 @@ class MyBottomNavigationBar extends StatelessWidget {
 
               break;
             case 2:
-              // context.pushRoute(ComingSoonScreen());
+              context.pushRoute(UserProfileInfoScreen());
 
               break;
             case 3:
@@ -39,7 +39,6 @@ class MyBottomNavigationBar extends StatelessWidget {
             case 4:
               context.pushRoute(UserProfileScreen());
               // context.pushRoute(UserProfileScreen());
-              
 
               break;
             default:

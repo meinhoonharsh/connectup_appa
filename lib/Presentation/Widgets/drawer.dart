@@ -1,9 +1,11 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, library_private_types_in_public_api
 
+import 'package:auto_route/auto_route.dart';
 import 'package:connect_up/Constants/colors.dart';
 import 'package:connect_up/Data/services/secure_storage.dart';
 import 'package:connect_up/Presentation/Widgets/coming_soon_label.dart';
 import 'package:connect_up/Presentation/Widgets/primary_button.dart';
+import 'package:connect_up/Routes/routes.gr.dart';
 import 'package:flutter/material.dart';
 // import 'package:nhsbpmonitor/constants/locations.dart';
 
@@ -194,6 +196,7 @@ class _MyDrawer2State extends State<MyDrawer> {
                     children: [
                       DrawerButton(
                           ontap: () {
+                            context.pushRoute(UserProfileInfoScreen());
                             // context.replaceRoute(HomeScreen());
                           },
                           title: "Dashboard",
@@ -230,12 +233,11 @@ class _MyDrawer2State extends State<MyDrawer> {
                       ),
                       sizedBoxSpacer(),
                       DrawerButton(
-                            ontap: () {
-                              // context.pushRoute(BasicInfo());
-                            },
-                            title: "Forums",
-                            leadIcon: Icons.format_paint_outlined),
-
+                          ontap: () {
+                            // context.pushRoute(BasicInfo());
+                          },
+                          title: "Forums",
+                          leadIcon: Icons.format_paint_outlined),
                       sizedBoxSpacer(),
                       DrawerButton(
                           ontap: () {
@@ -292,16 +294,14 @@ class DrawerButton extends StatelessWidget {
               size: 20,
               color: Colors.white.withOpacity(0.6),
             )),
-        CommingSoonLabel(
-          child: TextButton(
-            onPressed: ontap,
-            child: Text(
-              title,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+        TextButton(
+          onPressed: ontap,
+          child: Text(
+            title,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
             ),
           ),
         ),

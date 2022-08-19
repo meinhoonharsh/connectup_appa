@@ -12,6 +12,7 @@ import 'package:path_provider/path_provider.dart';
 import 'Routes/routes.gr.dart';
 // flutter packages pub run build_runner watch
 
+
 Future<void> main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
@@ -63,10 +64,10 @@ class MyApp extends StatelessWidget {
         // theme: appThemeData[AppTheme.lightTheme],
         // theme: ThemeData(primaryColor: const Color(0xff23A6B1)),
 
-        title: 'homepage',
+        title: 'ConnectUp',
         debugShowCheckedModeBanner: false,
         routerDelegate: _appRouter.delegate(
-            initialRoutes: [isLoggedIn ? LoginScreen() : LoginScreen()]),
+            initialRoutes: [isLoggedIn ? LoginAndRegisterScreen() : LoginAndRegisterScreen()]),
 
         // routerDelegate: _appRouter.delegate(),
 
