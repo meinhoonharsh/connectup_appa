@@ -8,6 +8,7 @@ import 'package:connect_up/Presentation/Widgets/drawer.dart';
 import 'package:connect_up/Presentation/Widgets/primary_button.dart';
 import 'package:connect_up/Presentation/Widgets/user_post_card.dart';
 import 'package:flutter/material.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 
 class UserProfileScreen extends StatefulWidget {
   UserProfileScreen({Key? key}) : super(key: key);
@@ -56,7 +57,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
         drawer: const MyDrawer(),
         backgroundColor: AppColors.darkBlueColor,
         bottomNavigationBar: MyBottomNavigationBar(
-          currentIndex: 3,
+          currentIndex: 4,
           mediaquery: mediaquery,
         ),
         body: SingleChildScrollView(
@@ -75,6 +76,8 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       profileAndBackGroundImage(mediaquery),
+                      const SizedBox(height: 55),
+                      
                       const SizedBox(height: 55),
                       // const SizedBox(height: 20),
 

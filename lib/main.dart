@@ -5,21 +5,22 @@ import 'package:auto_route/auto_route.dart';
 import 'package:connect_up/Data/services/secure_storage.dart';
 import 'package:connect_up/Logic/block_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
+
 import 'Routes/routes.gr.dart';
 // flutter packages pub run build_runner watch
 
 
 Future<void> main() async {
-
   WidgetsFlutterBinding.ensureInitialized();
 
-  SystemChrome.setPreferredOrientations(
-
-      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
 
   // final storage = await HydratedStorage.build();
   // hydrated storage is persisted across app restarts
@@ -66,8 +67,9 @@ class MyApp extends StatelessWidget {
 
         title: 'ConnectUp',
         debugShowCheckedModeBanner: false,
-        routerDelegate: _appRouter.delegate(
-            initialRoutes: [isLoggedIn ? LoginAndRegisterScreen() : LoginAndRegisterScreen()]),
+        routerDelegate: _appRouter.delegate(initialRoutes: [
+          isLoggedIn ? LoginAndRegisterScreen() : LoginAndRegisterScreen()
+        ]),
 
         // routerDelegate: _appRouter.delegate(),
 

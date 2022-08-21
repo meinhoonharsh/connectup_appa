@@ -1,9 +1,14 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+import 'dart:async';
+
+import 'package:auto_route/auto_route.dart';
 import 'package:connect_up/Constants/colors.dart';
 import 'package:connect_up/Constants/locations.dart';
+// import 'package:connect_up/Presentation/Screens/Home/home_screen.dart';
 import 'package:connect_up/Presentation/Widgets/bottom_navigation_bar.dart';
 import 'package:connect_up/Presentation/Widgets/drawer.dart';
 import 'package:connect_up/Presentation/Widgets/primary_button.dart';
+import 'package:connect_up/Routes/routes.gr.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -28,8 +33,9 @@ class _LoginAndRegisterScreenState extends State<LoginAndRegisterScreen> {
 
   @override
   void initState() {
-    if (!kReleaseMode) {
-      emailController.text = "test@gmail.com";
+    // if (!kReleaseMode) {
+    if (1 == 1) {
+      emailController.text = "satyapsr13@gmail.com";
       passwordController.text = "123456";
       confirmPasswordController.text = "123456";
     }
@@ -45,10 +51,10 @@ class _LoginAndRegisterScreenState extends State<LoginAndRegisterScreen> {
         key: _scaffoldKey,
 
         // appBar: AppBar(),
-        bottomNavigationBar: MyBottomNavigationBar(
-          currentIndex: 0,
-          mediaquery: mediaquery,
-        ),
+        // bottomNavigationBar: MyBottomNavigationBar(
+        //   currentIndex: 0,
+        //   mediaquery: mediaquery,
+        // ),
         drawer: const MyDrawer(),
 
         body: Form(
@@ -327,7 +333,8 @@ class _LoginAndRegisterScreenState extends State<LoginAndRegisterScreen> {
                               const SizedBox(height: 40),
                               PrimaryButton(
                                   onPressed: () {
-                                    if (_formKey.currentState!.validate()) {}
+                                    // if (_formKey.currentState!.validate()) {}
+                                    context.pushRoute(HomeScreen());
                                   },
                                   buttonText: isLogin ? "Login" : "Register"),
                               const SizedBox(height: 20),
@@ -351,7 +358,6 @@ class _LoginAndRegisterScreenState extends State<LoginAndRegisterScreen> {
                                           color: Colors.white,
                                           borderRadius:
                                               BorderRadius.circular(10),
-
                                         ),
                                         child: Image.asset(AppIcons.google,
                                             fit: BoxFit.cover)),
@@ -363,8 +369,8 @@ class _LoginAndRegisterScreenState extends State<LoginAndRegisterScreen> {
                                         width: 50,
                                         decoration: BoxDecoration(
                                           color: Colors.white,
-
-                                                            borderRadius: BorderRadius.circular(10),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
                                         ),
                                         child: Padding(
                                           padding: const EdgeInsets.all(8.0),
@@ -380,7 +386,6 @@ class _LoginAndRegisterScreenState extends State<LoginAndRegisterScreen> {
                                         decoration: BoxDecoration(
                                           borderRadius:
                                               BorderRadius.circular(10),
-
                                           color: Colors.white,
                                         ),
                                         child: Padding(

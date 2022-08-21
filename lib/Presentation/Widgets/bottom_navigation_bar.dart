@@ -23,18 +23,17 @@ class MyBottomNavigationBar extends StatelessWidget {
         onTap: (int val) {
           switch (val) {
             case 0:
-              // context.pushRoute(HomeScreen());
+              context.pushRoute(HomeScreen());
 
               break;
             case 1:
-              // context.pushRoute(IntrestScreen());
+              context.pushRoute(ExploreConnectUpScreen());
 
               break;
             case 2:
-              context.pushRoute(UserProfileInfoScreen());
-
               break;
             case 3:
+              context.pushRoute(UserProfileInfoScreen());
               break;
             case 4:
               context.pushRoute(UserProfileScreen());
@@ -54,8 +53,8 @@ class MyBottomNavigationBar extends StatelessWidget {
           FloatingNavbarItem(icon: Icons.shopping_bag, title: 'Home'),
           FloatingNavbarItem(
               icon: Icons.emoji_emotions_outlined, title: 'Explore'),
-          FloatingNavbarItem(icon: Icons.chat_sharp, title: 'Chats'),
           FloatingNavbarItem(icon: Icons.settings, title: 'Settings'),
+          FloatingNavbarItem(icon: Icons.person_add, title: 'Edit'),
           FloatingNavbarItem(icon: Icons.person, title: 'Profile'),
         ],
       ),

@@ -198,7 +198,7 @@ class _UserPostCardState extends State<UserPostCard> {
                             IconButton(
                                 onPressed: () {
                                   Share.share(
-                                      'check out http://beta.connectup.in/',
+                                      'Please check out http://connectup.in/ to build startUp culture in INDIA.',
                                       subject: 'ConnectUp');
                                 },
                                 icon: const Icon(

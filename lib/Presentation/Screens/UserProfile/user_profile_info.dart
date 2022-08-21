@@ -1,15 +1,19 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+import 'dart:io';
+import 'dart:typed_data';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:connect_up/Constants/colors.dart';
 import 'package:connect_up/Constants/locations.dart';
-import 'package:connect_up/Presentation/Widgets/bottom_navigation_bar.dart';
 import 'package:connect_up/Presentation/Widgets/drawer.dart';
 import 'package:connect_up/Presentation/Widgets/primary_button.dart';
 import 'package:connect_up/Presentation/Widgets/snackbar.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
+import 'package:share_plus/share_plus.dart';
 
 class UserProfileInfoScreen extends StatefulWidget {
   const UserProfileInfoScreen({Key? key}) : super(key: key);
@@ -38,10 +42,33 @@ class _UserProfileInfoScreenState extends State<UserProfileInfoScreen> {
   TextEditingController publicEmailController =
       TextEditingController(text: "satyaprakash@connectup.com");
   TextEditingController descriptionController = TextEditingController();
-
+  TextEditingController youtubeProfileController =
+      TextEditingController(text: "https://connectup.com");
+  TextEditingController twitterProfileController =
+      TextEditingController(text: "https://connectup.com");
+  TextEditingController instagramProfileController =
+      TextEditingController(text: "https://connectup.com");
+  TextEditingController facebookProfileController =
+      TextEditingController(text: "https://connectup.com");
+  TextEditingController linkedInProfileController =
+      TextEditingController(text: "https://connectup.com");
+  TextEditingController githubProfileController =
+      TextEditingController(text: "https://connectup.com");
+  Uint8List? profileImageBytes;
   bool profileExpansion = false;
   bool accoundExpansion = false;
 // scroll controller for the list view
+  bool isProfileInfoVisible = false;
+  bool isReferalVisible = false;
+  bool isSocialstreamsVisible = true;
+  final _bottomKey = GlobalKey();
+  final _scrollController = ScrollController();
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final mediaquery = MediaQuery.of(context).size;
@@ -70,11 +97,12 @@ class _UserProfileInfoScreenState extends State<UserProfileInfoScreen> {
         ),
         drawer: const MyDrawer(),
         backgroundColor: AppColors.darkBlueColor,
-        bottomNavigationBar: MyBottomNavigationBar(
-          currentIndex: 3,
-          mediaquery: mediaquery,
-        ),
+        // bottomNavigationBar: MyBottomNavigationBar(
+        //   currentIndex: 3,
+        //   mediaquery: mediaquery,
+        // ),
         body: SingleChildScrollView(
+          controller: _scrollController,
           child: Padding(
             padding: const EdgeInsets.all(15.0),
             child: Column(
@@ -139,29 +167,78 @@ class _UserProfileInfoScreenState extends State<UserProfileInfoScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               TextButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  setState(() {
+                                    isProfileInfoVisible = true;
+                                    isReferalVisible = false;
+                                    isSocialstreamsVisible = false;
+                                  });
+
+                                  _scrollController.position.ensureVisible(
+                                    _bottomKey.currentContext!
+                                        .findRenderObject()!,
+                                    curve: Curves.easeInOut,
+                                    alignment:
+                                        0.05, // How far into view the item should be scrolled (between 0 and 1).
+                                    duration: const Duration(seconds: 1),
+                                  );
+                                },
                                 child: Text(
                                   'Profile Info',
-                                  style: const TextStyle(
-                                    color: Colors.white,
+                                  style: TextStyle(
+                                    color: isProfileInfoVisible
+                                        ? Colors.green
+                                        : Colors.white,
                                   ),
                                 ),
                               ),
                               TextButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  setState(() {
+                                    isProfileInfoVisible = false;
+                                    isReferalVisible = false;
+                                    isSocialstreamsVisible = true;
+                                  });
+                                  _scrollController.position.ensureVisible(
+                                    _bottomKey.currentContext!
+                                        .findRenderObject()!,
+                                    curve: Curves.easeInOut,
+                                    alignment:
+                                        0.05, // How far into view the item should be scrolled (between 0 and 1).
+                                    duration: const Duration(seconds: 1),
+                                  );
+                                },
                                 child: Text(
                                   'Social & Streams',
-                                  style: const TextStyle(
-                                    color: Colors.white,
+                                  style: TextStyle(
+                                    color: isSocialstreamsVisible
+                                        ? Colors.green
+                                        : Colors.white,
                                   ),
                                 ),
                               ),
                               TextButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  setState(() {
+                                    isProfileInfoVisible = false;
+                                    isReferalVisible = true;
+                                    isSocialstreamsVisible = false;
+                                  });
+                                  _scrollController.position.ensureVisible(
+                                    _bottomKey.currentContext!
+                                        .findRenderObject()!,
+                                    curve: Curves.easeInOut,
+                                    alignment:
+                                        0.05, // How far into view the item should be scrolled (between 0 and 1).
+                                    duration: const Duration(seconds: 1),
+                                  );
+                                },
                                 child: Text(
                                   'Referrals',
-                                  style: const TextStyle(
-                                    color: Colors.white,
+                                  style: TextStyle(
+                                    color: isReferalVisible
+                                        ? Colors.green
+                                        : Colors.white,
                                   ),
                                 ),
                               ),
@@ -383,43 +460,66 @@ class _UserProfileInfoScreenState extends State<UserProfileInfoScreen> {
                       ),
                     ),
                     const SizedBox(height: 30),
-                    Container(
-                      height: mediaquery.height * 0.17,
-                      width: mediaquery.width * 0.75,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Color.fromARGB(255, 43, 50, 68),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Icon(
-                            Icons.image,
-                            size: 50,
-                            color: Colors.grey,
-                          ),
-                          Text(
-                            'Change Cover',
-                            style: const TextStyle(
-                              color: Colors.white,
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              '110*110px size minimum',
+                    InkWell(
+                      onTap: () {
+                        pickImage();
+                      },
+                      child: Container(
+                        // height: mediaquery.height * 0.17,
+                        width: mediaquery.width * 0.75,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Color.fromARGB(255, 43, 50, 68),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            profileImageBytes == null
+                                ? const Icon(
+                                    Icons.image,
+                                    size: 50,
+                                    color: Colors.grey,
+                                  )
+                                : Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(20),
+                                      child: Image.memory(
+                                        profileImageBytes!,
+                                        width: 100,
+                                        height: 100,
+                                      ),
+                                    ),
+                                ),
+                            Text(
+                              'Change Cover',
                               style: const TextStyle(
-                                  color: Colors.grey, fontSize: 10),
+                                color: Colors.white,
+                              ),
                             ),
-                          ),
-                        ],
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                '110*110px size minimum',
+                                style: const TextStyle(
+                                    color: Colors.grey, fontSize: 10),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                     const SizedBox(height: 30),
                   ],
                 ),
-                const SizedBox(height: 50),
-                aboutProfileItems(),
+                SizedBox(key: _bottomKey, height: 50),
+                isProfileInfoVisible
+                    ? aboutProfileInfoItems()
+                    : isSocialstreamsVisible
+                        ? socialAndStreamsItems()
+                        : isReferalVisible
+                            ? referralsItems(mediaquery, "_FSDL54")
+                            : Container(),
                 const SizedBox(height: 100),
               ],
             ),
@@ -429,7 +529,7 @@ class _UserProfileInfoScreenState extends State<UserProfileInfoScreen> {
     );
   }
 
-  Widget aboutProfileItems() {
+  Widget aboutProfileInfoItems() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -480,6 +580,7 @@ class _UserProfileInfoScreenState extends State<UserProfileInfoScreen> {
         ),
         const SizedBox(height: 30),
         TextFormField(
+          readOnly: true,
           style: inputTextStyle(),
           controller: birthdayController,
           onTap: () {
@@ -677,6 +778,214 @@ class _UserProfileInfoScreenState extends State<UserProfileInfoScreen> {
     );
   }
 
+  Widget socialAndStreamsItems() {
+    var colors = Colors.white;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Your social Accounts',
+          style: const TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+        ),
+        const SizedBox(height: 30),
+        socialInputFields(
+            githubProfileController, "Github", colors, AppIcons.github),
+        const SizedBox(height: 30),
+        socialInputFields(
+            linkedInProfileController, "LinkedIn", colors, AppIcons.linkedin),
+        const SizedBox(height: 30),
+        socialInputFields(facebookProfileController, "Facebook",
+            Colors.lightBlueAccent, AppIcons.linkedin),
+        const SizedBox(height: 30),
+        socialInputFields(instagramProfileController, "Instagram", Colors.pink,
+            AppIcons.linkedin),
+        const SizedBox(height: 30),
+        socialInputFields(twitterProfileController, "Twitter", Colors.blue,
+            AppIcons.linkedin),
+        const SizedBox(height: 30),
+        socialInputFields(
+            youtubeProfileController, "Youtube", Colors.red, AppIcons.linkedin),
+      ],
+    );
+  }
+
+  TextFormField socialInputFields(TextEditingController controller,
+      String labelText2, Color colors, String icon) {
+    return TextFormField(
+      style: inputTextStyle(),
+      controller: controller,
+      decoration: InputDecoration(
+        labelText: "$labelText2 Profile Link",
+        prefixIcon: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            width: 30,
+            height: 30,
+            decoration: BoxDecoration(
+              // shape: BoxShape.circle,
+              color: colors,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Center(
+              child: Image.asset(
+                icon,
+                width: 25,
+                height: 25,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+        ),
+        labelStyle: TextStyle(
+          color: Colors.grey,
+        ),
+        enabledBorder: outlineInputBorderStyle(),
+        focusedBorder: outlineInputBorderStyle(),
+        errorBorder: outlineInputBorderStyle(),
+        disabledBorder: outlineInputBorderStyle(),
+      ),
+    );
+  }
+
+  Widget referralsItems(Size mediaquery, String refralCode) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Your Referrals',
+          style: const TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+        ),
+        const SizedBox(height: 30),
+        Container(
+          height: mediaquery.height * 0.17,
+          width: mediaquery.width * 0.75,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Color.fromARGB(255, 43, 50, 68),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Row(
+                children: [
+                  const Spacer(flex: 5),
+                  IconButton(
+                      onPressed: () {
+                        Share.share(
+                            'check out http://beta.connectup.in/$refralCode',
+                            subject: 'ConnectUp');
+                      },
+                      icon: const Icon(
+                        Icons.share,
+                        size: 30,
+                        color: Colors.white,
+                      )),
+                  const Spacer(flex: 1),
+                  IconButton(
+                      onPressed: () {
+                        Clipboard.setData(ClipboardData(
+                            text: 'http://beta.connectup.in/$refralCode'));
+                        showSnackBar(
+                            context, Color(0xff7750f8), "Copied to clipboard");
+                      },
+                      icon: const Icon(
+                        Icons.copy,
+                        size: 20,
+                        color: Colors.white,
+                      )),
+                  const Spacer(flex: 5),
+                ],
+              ),
+              Text(
+                refralCode,
+                style: const TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  'Your Referal Code',
+                  style: TextStyle(
+                      color: Colors.white.withOpacity(0.8), fontSize: 10),
+                ),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(height: 30),
+        Container(
+          height: mediaquery.height * 0.17,
+          width: mediaquery.width * 0.75,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Color.fromARGB(255, 43, 50, 68),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Total Member till date',
+                style: TextStyle(
+                  color: Colors.white.withOpacity(0.9),
+                ),
+              ),
+              Text(
+                '0',
+                style: const TextStyle(color: Colors.white, fontSize: 30),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  'joined using your referal code',
+                  style: TextStyle(
+                      color: Colors.white.withOpacity(0.9), fontSize: 10),
+                ),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(height: 30),
+        Container(
+          height: mediaquery.height * 0.17,
+          width: mediaquery.width * 0.75,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Color.fromARGB(255, 43, 50, 68),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Your Referrals',
+                  style: const TextStyle(color: Colors.white, fontSize: 17),
+                ),
+                SizedBox(height: 10),
+                Text(
+                  'No one joined using your referal code',
+                  style: const TextStyle(color: Colors.white, fontSize: 14),
+                ),
+              ],
+            ),
+          ),
+        ),
+        const SizedBox(height: 30),
+      ],
+    );
+  }
+
   TextFormField emailInputFIeld() {
     return TextFormField(
       style: inputTextStyle(),
@@ -794,5 +1103,13 @@ class _UserProfileInfoScreenState extends State<UserProfileInfoScreen> {
         initialDate: DateTime.now(),
         firstDate: DateTime(1995),
         lastDate: DateTime.now());
+  }
+
+  void pickImage() async {
+    //image_picker: ^0.8.4+11
+    final image = await ImagePicker().pickImage(source: ImageSource.camera);
+    setState(() {
+      profileImageBytes = File(image!.path).readAsBytesSync();
+    });
   }
 }

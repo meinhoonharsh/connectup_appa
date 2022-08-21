@@ -132,7 +132,7 @@ class _MyDrawer2State extends State<MyDrawer> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Mrs. Lorem Ipsum',
+                          'Satya Prakash',
                           style: const TextStyle(
                             color: Colors.white,
                             fontSize: 18,
@@ -141,7 +141,7 @@ class _MyDrawer2State extends State<MyDrawer> {
                         ),
                         SizedBox(height: 5),
                         Text(
-                          'connectUp',
+                          'ConnectUp',
                           style: TextStyle(
                             color: Colors.white.withOpacity(0.8),
                             fontSize: 12,
@@ -171,10 +171,10 @@ class _MyDrawer2State extends State<MyDrawer> {
                   onPressed: () {
                     final storage = SecureStorage();
                     storage.deleteAll();
+                    context.replaceRoute(LoginAndRegisterScreen());
                   },
                   buttonText: 'Logout',
                   isHalfSize: true,
-                  isLoading: true,
                 ),
                 Divider(
                   color: Colors.white.withOpacity(0.1),
@@ -196,20 +196,24 @@ class _MyDrawer2State extends State<MyDrawer> {
                     children: [
                       DrawerButton(
                           ontap: () {
-                            context.pushRoute(UserProfileInfoScreen());
-                            // context.replaceRoute(HomeScreen());
+                            // context.pushRoute(UserProfileInfoScreen());
+                            context.replaceRoute(HomeScreen());
                           },
                           title: "Dashboard",
                           leadIcon: Icons.bar_chart_rounded),
                       sizedBoxSpacer(),
-                      DrawerButton(
-                        ontap: () {},
-                        title: "Feed",
-                        leadIcon: Icons.analytics_outlined,
+                      CommingSoonLabel(
+                        child: DrawerButton(
+                          ontap: () {},
+                          title: "Feed",
+                          leadIcon: Icons.analytics_outlined,
+                        ),
                       ),
                       sizedBoxSpacer(),
                       DrawerButton(
-                        ontap: () {},
+                        ontap: () {
+                          context.pushRoute(UserProfileInfoScreen());
+                        },
                         title: "User Account",
                         leadIcon: Icons.person,
                       ),

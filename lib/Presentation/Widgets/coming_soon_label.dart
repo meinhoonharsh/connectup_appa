@@ -18,8 +18,8 @@ class CommingSoonLabel extends StatelessWidget {
           right: -1,
           top: 0,
           child: Container(
-            height: 15,
-            width: 40,
+            height: 18,
+            width: 60,
             decoration: BoxDecoration(
               color: Colors.amber.withOpacity(0.5),
               borderRadius: BorderRadius.circular(10),
@@ -30,7 +30,7 @@ class CommingSoonLabel extends StatelessWidget {
                 'Coming Soon',
                 style: const TextStyle(
                   color: Colors.black,
-                  fontSize: 5
+                  fontSize: 8
                 ),
               ),
             ),
