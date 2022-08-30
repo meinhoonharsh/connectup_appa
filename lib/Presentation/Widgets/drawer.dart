@@ -196,7 +196,7 @@ class _MyDrawer2State extends State<MyDrawer> {
                     children: [
                       DrawerButton(
                           ontap: () {
-                            // context.pushRoute(UserProfileInfoScreen());
+                            // context.replaceRoute(UserProfileInfoScreen());
                             context.replaceRoute(HomeScreen());
                           },
                           title: "Dashboard",
@@ -212,7 +212,7 @@ class _MyDrawer2State extends State<MyDrawer> {
                       sizedBoxSpacer(),
                       DrawerButton(
                         ontap: () {
-                          context.pushRoute(UserProfileInfoScreen());
+                          context.replaceRoute(UserProfileInfoScreen());
                         },
                         title: "User Account",
                         leadIcon: Icons.person,
@@ -224,13 +224,15 @@ class _MyDrawer2State extends State<MyDrawer> {
                           leadIcon: Icons.people_outline_rounded),
                       sizedBoxSpacer(),
                       DrawerButton(
-                          ontap: () {},
+                          ontap: () {
+                            context.replaceRoute(UserStartUpInfoScreen());
+                          },
                           title: "Startups",
                           leadIcon: Icons.star_outline_outlined),
                       sizedBoxSpacer(),
                       DrawerButton(
                         ontap: () {
-                          // context.pushRoute(PersonalDetailsScreen());
+                          // context.replaceRoute(PersonalDetailsScreen());
                         },
                         title: "Events",
                         leadIcon: Icons.calendar_month_outlined,
@@ -238,14 +240,14 @@ class _MyDrawer2State extends State<MyDrawer> {
                       sizedBoxSpacer(),
                       DrawerButton(
                           ontap: () {
-                            // context.pushRoute(BasicInfo());
+                            // context.replaceRoute(BasicInfo());
                           },
                           title: "Forums",
                           leadIcon: Icons.format_paint_outlined),
                       sizedBoxSpacer(),
                       DrawerButton(
                           ontap: () {
-                            // context.pushRoute(RemindersScreen());
+                            // context.replaceRoute(RemindersScreen());
                           },
                           title: "Join Startup",
                           leadIcon: Icons.shopping_bag_rounded),

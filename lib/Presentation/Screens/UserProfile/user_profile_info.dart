@@ -2,12 +2,15 @@
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:connect_up/Constants/colors.dart';
 import 'package:connect_up/Constants/locations.dart';
+// import 'package:connect_up/Presentation/Screens/UserProfile/UserStartupScreens/user_start_up_screen.dart';
 import 'package:connect_up/Presentation/Widgets/drawer.dart';
 import 'package:connect_up/Presentation/Widgets/primary_button.dart';
 import 'package:connect_up/Presentation/Widgets/snackbar.dart';
+import 'package:connect_up/Routes/routes.gr.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -301,29 +304,13 @@ class _UserProfileInfoScreenState extends State<UserProfileInfoScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               TextButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  context.pushRoute(UserStartUpInfoScreen());
+                                },
                                 child: Text(
-                                  'Profile Info',
+                                  'Manage Startups',
                                   style: const TextStyle(
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                              TextButton(
-                                onPressed: () {},
-                                child: Text(
-                                  'Social & Streams',
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                              TextButton(
-                                onPressed: () {},
-                                child: Text(
-                                  'Referrals',
-                                  style: const TextStyle(
-                                    color: Colors.white,
+                                    color: Colors.green,
                                   ),
                                 ),
                               ),
@@ -481,8 +468,8 @@ class _UserProfileInfoScreenState extends State<UserProfileInfoScreen> {
                                     color: Colors.grey,
                                   )
                                 : Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: ClipRRect(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: ClipRRect(
                                       borderRadius: BorderRadius.circular(20),
                                       child: Image.memory(
                                         profileImageBytes!,
@@ -490,7 +477,7 @@ class _UserProfileInfoScreenState extends State<UserProfileInfoScreen> {
                                         height: 100,
                                       ),
                                     ),
-                                ),
+                                  ),
                             Text(
                               'Change Cover',
                               style: const TextStyle(
